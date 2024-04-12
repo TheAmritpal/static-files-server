@@ -6,6 +6,10 @@ import (
 
 func main() {
         router := gin.New()
+	router.Use(func(c *gin.Context) {
+        	c.Header("Access-Control-Allow-Origin", "*")
+        	c.Next()
+	})
         router.GET("/hello", func(c *gin.Context) {
                 c.String(200, "Hello, World!")
         })
